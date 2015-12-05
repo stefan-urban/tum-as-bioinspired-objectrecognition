@@ -1,0 +1,154 @@
+\documentclass[a4paper,twoside, openright,12pt]{report}
+\usepackage{psfrag,amsbsy,graphics,float}
+\usepackage{graphicx, color} %Deleted [dvips] in front of {graphicx, color} for usage also with PDFLaTex
+\usepackage[latin1]{inputenc}
+\usepackage{verbatim}
+
+% based on the LSR Student Template, last change: 2014-06-05
+
+%_______Kopf- und Fußzeile_______________________________________________________
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%um Kopf- und Fußzeile bei chapter-Seiten zu reaktivieren
+\newcommand{\helv}{%
+   \fontfamily{phv}\fontseries{a}\fontsize{9}{11}\selectfont}
+\fancypagestyle{plain}{
+	\fancyfoot{}% keine Fußzeile
+	\fancyhead[RE]{\helv\leftmark}% Rechts auf geraden Seiten=innen; in \leftmark stehen \chapters
+	\fancyhead[LO]{\helv\rightmark}% Links auf ungeraden Seiten=außen;in \rightmark stehen \sections
+	\fancyhead[RO,LE]{\thepage}}%Rechts auf ungeraden und links auf geraden Seiten
+%Kopf- und Fußzeile für alle anderen Seiten
+\fancyfoot{}
+\fancyhead[RE]{\helv\leftmark}
+\fancyhead[LO]{\helv\rightmark}%alt:\fancyhead[LO]{\itshape\rightmark}
+\fancyhead[RO,LE]{\thepage}
+%________________________________________________________________________________
+
+
+%_Definieren der Ränder und Längen__________
+\setlength{\textwidth}{15cm}
+\setlength{\textheight}{22cm}
+\setlength{\evensidemargin}{-2mm}
+\setlength{\oddsidemargin}{11mm}
+\setlength{\headwidth}{15cm}
+\setlength{\topmargin}{10mm}
+\setlength{\parindent}{0pt} % Kein Einrücken beim Absatz!!
+%___________________________________________
+
+%_Hyperref for CC Url__________
+\usepackage[hidelinks]{hyperref}
+%___________________________________________
+
+%_______Title Page__________________________________________
+\begin{document}
+\pagestyle{empty}
+\enlargethispage{4.5cm} %Damit das Titelbild weit genug unten ist!
+\begin{center}
+\phantom{u}
+\vspace{0.5cm}
+\Huge{\sc Bio-inspired landmark recognition models}\\
+\vspace{1.5cm}
+		\large{
+			ADVANCED SEMINAR\\
+			%Intermediate Report\\
+			\vspace{0.4cm}
+			submitted by\\
+			Stefan Urban\\
+			% if this is a diploma/bachelor/master thesis include the following:
+			%\vspace{0.5cm}
+			%born on: DD.MM.YYYY\\
+			%\vspace{0.5cm}
+			%Streetname XX \\
+			%Zipcode City \\
+			%Tel.: xxx\,xxxxxxxx \\
+			\vspace{1.5cm}
+			NEUROSCIENTIFIC SYSTEM THEORY\\
+			Technische Universit\"at M\"unchen\\
+			\vspace{0.3cm}
+			Prof. Dr J\"org Conradt\\
+		}
+\end{center}
+\vspace{5.5cm}
+\begin{tabular}{ll}
+Supervisor: & Marcello Mulas, PhD  \\
+% add the start and intermediate report dates for DA/BA/MA thesis
+%Start: & xx.xx.201x  \\
+%Intermediate Report: &  xx.xx.201x  \\
+Final Submission: &  12.01.2016 \\
+\end{tabular}
+%____________________________________________________________
+
+\newpage
+\cleardoublepage
+
+
+
+\phantom{u}
+\phantom{1}\vspace{6cm}
+\begin{center}
+In your final hardback copy, replace this page with the signed exercise sheet.
+\end{center}
+
+\newpage
+
+
+%_______Abstract_____________________________________________
+\topmargin5mm
+\textheight220mm
+\pagenumbering{arabic}
+\phantom{u}
+\begin{abstract}
+  \input{01_abstract.tex}
+\end{abstract}
+%____________________________________________________________
+
+\newpage
+
+%_______Widmung_______________________________________________
+\phantom{u}
+\phantom{1}\vspace{6cm}
+\begin{center}
+%Hier die Widmung oder leer lassen
+\end{center}
+%_____________________________________________________________
+
+
+
+\pagestyle{fancy}
+
+%_________Inhaltsverzeichnis__________________________
+\tableofcontents
+%_____________________________________________________
+
+	\input{02_content.tex}
+
+%_______________________________________________________________
+
+
+%_____Abbildungsverzeichnis_________________________________
+\cleardoublepage
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures 	 %Abbildungsverzeichnis
+
+%___________________________________________________________
+
+%_____Literaturverzeichnis_________________________________
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{mybib}
+\bibliographystyle{alphaurl}
+%__________________________________________________________
+
+
+%_____License_________________________________
+\cleardoublepage
+\chapter*{License}
+\markright{LICENSE}
+This work is licensed under the Creative Commons Attribution 3.0 Germany
+License. To view a copy of this license,
+visit \href{http://creativecommons.org/licenses/by/3.0/de/}{http://creativecommons.org} or send a letter
+to Creative Commons, 171 Second Street, Suite 300, San
+Francisco, California 94105, USA.
+%__________________________________________________________
+
+\end{document}
