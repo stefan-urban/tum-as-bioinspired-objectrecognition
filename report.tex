@@ -1,8 +1,13 @@
 \documentclass[a4paper,twoside, openright,12pt]{report}
 \usepackage{psfrag,amsbsy,graphics,float}
-\usepackage{graphicx, color} %Deleted [dvips] in front of {graphicx, color} for usage also with PDFLaTex
-\usepackage[latin1]{inputenc}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[utf8]{inputenc}
 \usepackage{verbatim}
+\usepackage[english]{babel}
+\usepackage{svg}
+\usepackage{caption}
+\usepackage[square,sort,comma]{natbib}
 
 % based on the LSR Student Template, last change: 2014-06-05
 
@@ -74,22 +79,9 @@ Supervisor: & Marcello Mulas, PhD  \\
 % add the start and intermediate report dates for DA/BA/MA thesis
 %Start: & xx.xx.201x  \\
 %Intermediate Report: &  xx.xx.201x  \\
-Final Submission: &  12.01.2016 \\
+Final Submission: &  18.01.2016 \\
 \end{tabular}
 %____________________________________________________________
-
-\newpage
-\cleardoublepage
-
-
-
-\phantom{u}
-\phantom{1}\vspace{6cm}
-\begin{center}
-In your final hardback copy, replace this page with the signed exercise sheet.
-\end{center}
-
-\newpage
 
 
 %_______Abstract_____________________________________________
@@ -108,7 +100,7 @@ In your final hardback copy, replace this page with the signed exercise sheet.
 \phantom{u}
 \phantom{1}\vspace{6cm}
 \begin{center}
-%Hier die Widmung oder leer lassen
+Hier die Widmung oder leer lassen
 \end{center}
 %_____________________________________________________________
 
@@ -137,12 +129,12 @@ In your final hardback copy, replace this page with the signed exercise sheet.
 \addcontentsline{toc}{chapter}{Bibliography}
 \bibliography{mybib}
 %\bibliographystyle{alphaurl}
-\bibliographystyle{plain}
+\bibliographystyle{plainnat}
 %__________________________________________________________
 
 
 %_____License_________________________________
-\cleardoublepage
+
 \chapter*{License}
 \markright{LICENSE}
 This work is licensed under the Creative Commons Attribution 3.0 Germany
