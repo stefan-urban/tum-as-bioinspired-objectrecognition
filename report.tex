@@ -1,4 +1,4 @@
-\documentclass[a4paper,twoside, openright,12pt]{report}
+\documentclass[a4paper, openright, 12pt]{report}
 \usepackage{psfrag,amsbsy,graphics,float}
 \usepackage{graphicx}
 \usepackage{color}
@@ -8,6 +8,7 @@
 \usepackage{svg}
 \usepackage{caption}
 \usepackage[square,sort,comma]{natbib}
+\usepackage{pdfpages}
 
 % based on the LSR Student Template, last change: 2014-06-05
 
@@ -84,6 +85,19 @@ Final Submission: &  18.01.2016 \\
 %____________________________________________________________
 
 
+\clearpage
+
+~
+
+\newpage
+\clearpage
+
+%_______TaskDescripion_______________________________________
+
+\includepdf{task-description.pdf} 
+
+
+
 %_______Abstract_____________________________________________
 \topmargin5mm
 \textheight220mm
@@ -93,17 +107,6 @@ Final Submission: &  18.01.2016 \\
   \input{01_abstract.tex}
 \end{abstract}
 %____________________________________________________________
-
-\newpage
-
-%_______Widmung_______________________________________________
-\phantom{u}
-\phantom{1}\vspace{6cm}
-\begin{center}
-Hier die Widmung oder leer lassen
-\end{center}
-%_____________________________________________________________
-
 
 
 \pagestyle{fancy}
