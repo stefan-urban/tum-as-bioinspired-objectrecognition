@@ -14,7 +14,6 @@
 	As the main task of this seminar is to find a biological inspired way for self-localization, chapter 4 comes back to that and links the acquired models to that application. It is basically object recognition but with some boundary conditions and many additional work.
 	
 	
-% todo: Title?
 \chapter{Human Visual System}
 
 	Until today the human vision is the best-known system for recognizing objects and actions in a scene is a very short time. The basis to understand how it works lies in the anatomy and physiology. Therefore all the parts that belong to the visual cortex are described here.
@@ -42,9 +41,9 @@
 			\caption{Cross section of the retina \citep{kolb2003retina}}
 		\end{figure}
 		
-		So what is the output of the retina?
+		So what is the output of the retina? Ganglion cells are connected to many rods and cones each but their specific function differs drastically. Mostly there are cells that fire when the center of their receptive field is illuminated and the surroundings are not, or the other way around (OFF- and ON-center cells).
 		
-		%todo
+		Additionally there are ganglion cells that are responsible for special low level functions. For example the focusing of the eye or the signal inhibition when the eye of head moves and would overflow the cortex with information (object motion sensitive cells).
 		
 		\begin{figure}[H]
 			\centering
@@ -53,16 +52,6 @@
 			\caption{Different types of neuroes in the layers of the retina (from top): photo receptors, horizontal cells, bipolar cells, amacrine cells and ganglion cells \citep{masland2001fundamental}}
 		\end{figure}
 		
-		output:
-			- mainly to the LGN and from then on in the primary visual cortex
-			- other low level functions: pupil control, shut lids on flash, ...
-		
-		output characteristics:
-			- everything happens in parallel
-			
-		special low level function:
-			- inhibit signals caused by eye or head movement (object motion sensitive cells)
-
 	\section{Optic Chiasm and Lateral Geniculate Nucleus}
 	
 		In the optic chiasm the signals on the optic nerve are separated into the left and right half frame of the eye. Then the same side signals from both eyes are sent together to the lateral geniculate nucleus (LGN).
@@ -76,8 +65,7 @@
 
 		The major processes that happen in the LGN have to do with combining the signals from the left and right eye. This has little effect on the ability to recognize objects simply because this also works with only one eye.
 		
-	
-	\section{Visual Cortex}
+	\section{Visual Cortex} \label{visual-cortex}
 	
 		The human visual cortex is the biggest single part of the brain. This emphasizes the major role vision has for humans. In about 20 distinct areas the incoming signals from the retina are processed in a mostly hierarchically manner.
 		
@@ -100,9 +88,12 @@
 			\caption{Ventral (purple) stream going to temporal lobe and dorsal (green) stream heading to parietal lobe [Source: scholarpedia.org]}
 		\end{figure}
 		
-		In the first layer, the primary visual cortex, each neuron only responds to very little areas of the visual field. As the information over more and more neurons are combined in higher areas, each neuron represents the content of a larger receptive field. At the end invariance of position in the visual field is achieved, which means an object can be recognized no matter where on the input image it is. Simultaneously the selectivity is retained on higher levels with more complex patterns.
+		In the first layer V1, the primary visual cortex, each neuron only responds to very little areas of the visual field. Basic information about the orientation and movement of objects are obtained. Beginning with the V2 the signals are combined for invariance over the whole visual field. From then on the ventral stream mainly goes along the regions V4 and end in the inferior temporal cortex (IT). In there most of the high-level processing happens. With the connection to the memory areas of the brain, here arise stimuli like recognized objects and faces.
 		
-		As model to explain this was developed by \citeauthor{hubel1962receptive} with the use of simple and complex cells. It is described as part of the following chapter.
+		As the information over more and more neurons are combined in higher visual cortex areas, each neuron represents the content of a larger receptive field. At the end invariance of many interferences is achieved, which means an object can be recognized no matter where for example on the input image it is, or what it's rotation is.
+		
+		A model to explain this was developed by \citeauthor{hubel1962receptive} with the use of so called simple and complex cells. They are described as part of the following chapter.
+		
 		
 \chapter{Biologically Inspired Computational Models of the Visual System}
 
@@ -112,26 +103,6 @@
 	
 	To realize that kind of model, first of all the signal propagation in the visual system is summed up. Then with the research of \citep{hubel1962receptive} as basis the HMAX model will be explained.
 
-%	\section{Types of Models}
-%		
-%		- start to abstract functional entities
-%			- first model a neuron
-%			- second model a bunch of neurons (functional areas)
-%		
-%		\subsection{Numerical Simulations}
-%		
-%			- simulating single neurons
-%		
-%			- very impractical because of high computational efforts, slow
-%		
-%		\subsection{Functional Models}
-%
-%			bottom-up vs top-down
-%			
-%			- stimulus-driven: characteristics like luminance, contrast, ...
-%			
-%			- top-down (goal driven): viewing task, expectations based on other stimuli or memory, temporal continuity, reasoning (visual attention)
-	
 	\section{Basics}
 			
 		\subsection{Signal Propagation}\label{signal}
@@ -139,9 +110,6 @@
 			The only connection of the retina is the optic nerve. It is about 1 million axons transmitting information in one direction, hence only feed-forward.
 			
 			Each additional layer of the visual path has back some sort of feedback. As mentioned in chapter 2, almost every connection in figure \ref{cortex-map} is bidirectional. This makes modeling extremely difficult. \citeauthor{thorpe1996speed} found out that even every cortex area of the visual system has some sort of higher function level feedback, in the first 150 milliseconds it is not active. Therefore for this short time one can assume a strict feed-forward network. Despite the fact many features are missing, most models limit themselves to feed-forward.
-			
-			What does the feedback provided and why is it important?
-			%todo
 			
 		\subsection{Simple and Complex Cells}
 			
@@ -173,7 +141,7 @@
 		
 		\subsection{HMAX model for object recognition}\label{hmax}
 		
-			The research of \citeauthor{hubel1962receptive} was not originally intended for object recognition. It was extended by \citeauthor{riesenhuber1999hierarchical} to form a hierarchical model that uses simple and complex cells as building blocks, the HMAX model. As mentioned in \ref{signal}, as most models this one is strictly feed-forward only. 
+			The research of \citeauthor{hubel1962receptive} was not originally intended for object recognition. It was extended by \citeauthor{riesenhuber1999hierarchical} to form a hierarchical model that uses simple and complex cells as building blocks: the HMAX model. As mentioned in \ref{signal}, as most models this one is strictly feed-forward only. 
 		
 			\begin{figure}[H]
 				\centering
@@ -182,62 +150,109 @@
 				\label{hmax-model}
 			\end{figure}
 			
-			As one can see in figure \ref{hmax-model}, the model consists of 5 layers. The first four layers are alternating simple and complex cells. The first stage features a lattice of blocks that are sensitive to orientation in their respective receptive field. The second layer creates position invariance as it pools over simple cells with the same orientation angle. At S2 these complex cell outputs are composed to selective features such as edges or borders. After another layer that increases invariance over various transformations, view-tuned cells can describe abstract high-level features like the presence of a specific object. Scale invariance is not shown in this figure, but it is achieved by utilizing different scales of simple cells and involvement in the subsequent complex pooling operation.
+			As one can see in figure \ref{hmax-model}, the model consists of 5 layers. The first four layers are alternating simple and complex cells. The first stage features a lattice of blocks that are sensitive to orientation in their respective receptive field. The second layer creates position invariance as it pools over simple cells with the same orientation angle. At S2 these complex cell outputs are composed to selective features such as edges or borders. After another layer that increases invariance over other various transformations, view-tuned cells can describe abstract high-level features like the presence of a specific object. Scale invariance is not shown in this figure, but it is achieved by utilizing different scales of first layer of simple cells and involvement in the subsequent complex pooling operation.
 			
-			For object identification, supervised learning of the HMAX model is pretty straight-forward. An image of the object is inserted into the model. The response of the second complex cell layer is recorded and turned into an appropriate view-tuned cell. But there is a need for learning of objects by many pictures differing in perspective, illuminance, position and other transformations. This easily lead to a vast amount of example images for one object.
-		
+			These pooling operations performed by the complex cells are implemented using a nonlinear maximum. This tends to be better than the summation as alternative because it disregards clutter and interferences.
+			
+			For object identification, supervised learning of the HMAX model works like this: An image of the object is inserted into the model. The response of the second complex cell layer (C2) is recorded and turned into an appropriate view-tuned cell. But there is a need for learning of objects with many pictures differing in perspective, illuminance, position and other transformations. This easily leads to a vast amount of example images for one object.
+			
+			The two main problems when developing a model for the visual cortex are resolved pretty good. HMAX can provide a high level of invariance in scale, position, rotation and other transformation of the object by simply pooling over the respective cell outputs. Also the selectivity is very high because even on higher layers very sharp edge and border information is used.
+			
+			\paragraph{Performance} Tests showed that the HMAX model performs very good with natural image sets like Caltech101. But \citep{pinto2008real} argues these images are not at all representative for the task, this model was developed. They feature objects from many different viewing angles in various lightning conditions which is good. This is also stated by the Caltech101 website: "Most images have little or no clutter. The objects tend to be centered in each image."\footnote{\url{http://www.vision.caltech.edu/Image_Datasets/Caltech101}} On real-world image variation, that very well include many interferences, the performance is dropping.
+			
+			
 		\subsection{Extention of HMAX with Template Matching}
 		
-			A few years later \citeauthor{serre2007robust} extended the HMAX model with template matching functionality which is more closer the biological reality in the inferotemporal cortex \citep{poggio2004generalization}. The basic assumptions are the same as for the standard HMAX model: the processing is hierarchial (scale and position first, then other transformations), feed-forward only and an increasing receptive field the higher level a neuron is. But one major thing changes now: Learning is assumed to happen almost at every layer which has to be realized as well as possible.
-	
+			A few years later \citeauthor{serre2007robust} extended the HMAX model with template matching functionality which is more closer the biological reality in the inferotemporal cortex \citep{poggio2004generalization}.
+			
+			The basic assumptions are the same as for the standard HMAX model: the processing is hierarchal (scale and position first, then other transformations), feed-forward processing only and the receptive field is increasing the higher layer a neuron is. But one major thing changes now: Learning is assumed to happen almost at every layer which has to be realized as well as possible.
+			
 			\begin{figure}[H]
 				\centering
-				\includegraphics[width=\textwidth, trim= 2.5cm 15.35cm 4cm 3.5cm, clip]{images/serre-appearance-based-model.pdf}
-				\caption{System overview of the model proposed by \citeauthor{serre2007robust}}
+				\captionsetup{justification=centering,margin=1cm}
+				\includegraphics[width=\textwidth, trim= 2.5cm 18.2cm 4cm 3.5cm, clip]{images/serre-appearance-based-model.pdf}					%\includegraphics[width=\textwidth, trim= 2.5cm 18.61cm 4cm 3.5cm, clip]{images/serre-appearance-based-model.pdf}				%\includegraphics[width=\textwidth, trim= 2.5cm 15.35cm 4cm 3.5cm, clip]{images/serre-appearance-based-model.pdf}
+				\caption{System overview of the model (Source: \citep{serre2007robust})}
 				\label{serre-model}
 			\end{figure}
 			
-			%todo
+			The figure \ref{serre-model} shows the proposed model with it's four stages. In the first one, $ S_1 $, for an incoming gray-scale image, multiple Gabor filters (16 scales and 4 orientations) are applied:
 			
+			\begin{align*}
+				F\left(x,y\right) = e^{-\frac{x_0^2+\gamma^2 y_0^2}{2 \sigma^2}} \times \cos\left(\frac{2\pi}{\lambda}x_0\right)
+			\end{align*}
+			
+			mit \vspace*{-0.8cm}
+			\begin{align*}
+			 x_0 &= x \cos\Theta + y \sin\Theta \\
+				y_0 &= -x \sin\Theta + y \cos\Theta \\
+				\Theta &= 0^\circ; 45^\circ; 90^\circ; 135^\circ
+			\end{align*}
+			
+			\vspace*{0.2cm}
+			
+			The exact parameters can be looked up in the original paper:  \citep{serre2007robust}.
+%			
+%			The parameters are the aspect ratio $ \gamma = 0.3 $, the effective width $ \sigma $, the wavelength $ \lambda $ as well as the filter sizes $ s $. All missing values can be seen in figure \ref{serre-model-s1-vals}. These were determined on basis of data by other research groups.
+%
+%			\begin{figure}[H]
+%				\centering
+%				\captionsetup{justification=centering,margin=1cm}
+%				\includegraphics[width=0.5\textwidth, trim=0.5cm 19cm 11.5cm 4.5cm, clip]{images/serre-appearance-based-model2.pdf}	
+%				\caption{Parameters for the $ S_1 $ stage of the model calculated with the help of data by other research teams (Source: \citep{serre2007robust})}
+%				\label{serre-model-s1-vals}
+%			\end{figure}
+%			
+
+			\vspace*{0.3cm}
+
+			These filters create 64 different output images. In the next stage, $ C_1 $, the complex cells provides the local maximum over position, thus providing shift invariance. During this operation always two of the 16 scales are combined, leaving a total of 32 images (8 sets with 4 different filter orientations).
+			
+			These are compared with a vast amount of trained feature patches in $S_2$. This is the template matching that is new to the model. The determination of the training patches is simple: A target set of pictures of objects that should be recognized is acting as input of the model. The feature values are then simply taken from the $C_1$ output. Later every new image will be compared to all available trained feature values with a radial bias function (RBF):
+			
+			\[ r = e^{-\beta \vert\vert \textbf{X} - \textbf{P}_i \vert\vert^2 } \]
+			
+			The higher the value $ r $, the better the correspondence to the trained feature.
+			
+			$C_2$ finally pools over all $S_2$ outputs of the same feature patch and saves only the maximum. This leaves a vector with the length of the trained patches.
+			
+			\paragraph{Performance} A major limitation could be the $S_1$ and $C_1$ stages that do need much computational effort. But the overall performance shown in , especially in comparison with SIFT, proves it being worth it (see figure \ref{serre-performance}).
+			
+			\begin{figure}[H]
+				\centering
+				\captionsetup{justification=centering,margin=1cm}
+				\includegraphics[width=0.5\textwidth, trim=1.8cm 20cm 12cm 4cm, clip]{images/serre-appearance-based-model3.pdf}
+				\caption{Performance of model proposed by \citep{serre2007robust}}
+				\label{serre-performance}
+			\end{figure}
+			
+			All performance tests in the paper were conducted while not tuning one single parameter. These were determined using data about the primary visual cortex. Improvements are very well possible.
+			
+			As opposed to having a broad categorization performance, specializing on object identification is way easier. Reference images have to be learned as explained above. In the process of recognition, the radial basis function will provide a high value just because it is not a feature but more like a specific object patch.
+
 	\section{Biological plausibility}
-
-		- simple and complex (MAX) cell functions by \cite{serre2005theory} chapter 3
 	
-		- no feedback
+		\paragraph{Simple and Complex Cells} Many parts of the HMAX model were designed with the experiments of \citeauthor{hubel1962receptive} in mind. These only represent a very basic computational part in the visual cortex. Nevertheless it is necessary, that it is possible to realize the two main building blocks of the model, the simple and complex cells, in neuronal circuits. If that would not be possible, further investigations would be pointless. This was studied in \citep{serre2005theory} with a positive result.
 		
-		- needs many examples for learning an object
-			> Human can do this with only very few
+		\paragraph{No Feedback} One of the main problems the presented models have is the strict limitation to feed-forward networks. As outlined in section \ref{visual-cortex}, this is absolutely not true. There are several attempts to achieve this but they mostly have major deficits. This is understandable when looking at a functional map of the visual cortex (figure \ref{cortex-map}). The connections reach up to the hippocampus and are influenced by cognitive behavior. Also it is arguable if integration of higher brain functions will lead to better object recognition performance.
 		
-		- clutter in scene causes big issues
+		\paragraph{Learning} While making it possible to reduce the amount of images needed for training of object recognition models, humans still are way better. They normally can recognize an object with only one single example as trained reference.
 		
-		- Problems may be solved using feedback
-
-		- +++ include hierarchy image
-	
-	\section{Comparison with State-of-the-Art Artificial Object Recognition}
-	
-		- common test framework: CaltecXYZ
-	
-		- regarding categorization, feature extraction (SIFT)
-		
-		\citep{serre2007robust}
-			
 \chapter{Application: Localization}
 
-	- two approaches:
-		- learning of every position individually: unpractical
-		- learning the location of prominent objects and localize yourself using combinatiton of knowledge
-
-	- so we go with the second approach
-
-	- first, object recognition
+	One of many possible applications for object recognition in general is self-localization. Therefore stationary objects, called landmarks, have to be recognized and associated with position information.
 	
-	- second, location of the objects must be known
+	A simple example: A robot drives through a hallway. There are many different object to recognize that he knows, like a door. But usually there is not only a single door but many different. If recognizing more objects in the surrounding area, like windows, plants or hallway junctions, the possible locations for this kind of specific occurrences is limited. This is normally implemented using a particle filter that is for example explained in \citep{siagian2009biologically}.
 	
-	- third, different information pieces must be put together for exact localization (particle filter) \citep{siagian2009biologically}
-
-
+	But what requirements does this have for the object recognition algorithm? First of all the computational effort should be kept within reasonable limits. Normally the self-localization is not the primary task when there is the need for it. Secondly the image of the camera does not focus automatically onto specific separated objects. There will always be much clutter in the model inputs. One way to overcome this issue is more extensive training. But this is in conflict with the third requirement for object recognition algorithms: Ideally it does not need much object examples to perform well. It is highly unpractical if for indoor navigation every object in each single room has to be trained with hundreds of images.
+	
+	
 \chapter{Conclusion}
 
-	still artificial RGB images are used, event based cameras are more biological accurate
+	
+	models must be extended using more layers (S3, C3)
+	
+	doubtful if current feedback research will improve object recognition performance
+	
+	
+	
 	
