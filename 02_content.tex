@@ -132,90 +132,96 @@
 %			
 %			- top-down (goal driven): viewing task, expectations based on other stimuli or memory, temporal continuity, reasoning (visual attention)
 	
-		
-	\section{Signal Propagation}\label{signal}
-		
-		The only connection of the retina is the optic nerve. It is about 1 million axons transmitting information in one direction, hence only feed-forward.
-		
-		Each additional layer of the visual path has back some sort of feedback. As mentioned in chapter 2, almost every connection in figure \ref{cortex-map} is bidirectional. This makes modeling extremely difficult. \citeauthor{thorpe1996speed} found out that even every cortex area of the visual system has some sort of higher function level feedback, in the first 150 milliseconds it is not active. Therefore for this short time one can assume a strict feed-forward network. Despite the fact many features are missing, most models limit themselves to feed-forward.
-		
-		What does the feedback provided and why is it important?
-		%todo
-		
-	\section{Simple and Complex Cells}
-		
-		The basis for the following models described in section \ref{hmax} is an achievement by nobel prize winners \citeauthor{hubel1962receptive}. They discovered two types of neurons in the visual cortex: simple and complex cells.
-		
-		The simple cells respond to light or darkness in a certain area of the visual field, that is called receptive field. They combine multiple ON- of OFF-cells coming from the ganglion layer in the retina as one can see in figure \ref{simple-cell}. Thereby orientation selective simple cells can be modeled.
-
-		\begin{figure}[H]
-			\centering
-			\captionsetup{justification=centering,margin=1cm}
-			\includegraphics[width=0.2\textwidth, trim=6.9cm 2cm 21.4cm 17cm, clip]{images/Simple_and_Complex_Cells.pdf}
-			\caption[https://en.wikipedia.org/wiki/File:Simple\_and\_Complex\_Cells.pdf]{Overlap over multiple ON-center ganglion cells that is performed by a simple cell}
-			\label{simple-cell}
-		\end{figure}
-		
-		Complex cells on the other hand combine the output of multiple simple cells and are able to fire when detecting edges or even motion in a specific direction. Figure \ref{hubel-exp} shows a experiment that was performed using a cat as test subject. An electrode was injected into a complex cell in the visual cortex. If the bright white bar was moved in the direction of the drawn arrow, the neuron would fire. If the bar stops or moves the other direction, it would not.
-		
-		\begin{figure}[H]
-			\centering
-			\captionsetup{justification=centering,margin=1cm}
-			\includegraphics[width=0.5\textwidth]{images/hubel-experiment.png}
-			\caption{Experiment performed by \citeauthor{hubel1962receptive}: Complex cell of a cat's visual cortex, the neuron fires only if a short bar is moved in the arrows direction [Source: youtube.com]}
-			\label{hubel-exp}
-		\end{figure}
-		
-		In \citep{hubel1965receptive} the two scientists extended their model with the introduction of so called hypercomplex cells. These are basically cells with a complexity beyond the normal complex cells and can be found in higher cortical areas.
-		
-	\section{HMAX model for object recognition}\label{hmax}
+	\section{Basics}
+			
+		\subsection{Signal Propagation}\label{signal}
+			
+			The only connection of the retina is the optic nerve. It is about 1 million axons transmitting information in one direction, hence only feed-forward.
+			
+			Each additional layer of the visual path has back some sort of feedback. As mentioned in chapter 2, almost every connection in figure \ref{cortex-map} is bidirectional. This makes modeling extremely difficult. \citeauthor{thorpe1996speed} found out that even every cortex area of the visual system has some sort of higher function level feedback, in the first 150 milliseconds it is not active. Therefore for this short time one can assume a strict feed-forward network. Despite the fact many features are missing, most models limit themselves to feed-forward.
+			
+			What does the feedback provided and why is it important?
+			%todo
+			
+		\subsection{Simple and Complex Cells}
+			
+			The basis for the following models described in section \ref{hmax} is an achievement by nobel prize winners \citeauthor{hubel1962receptive}. They discovered two types of neurons in the visual cortex: simple and complex cells.
+			
+			The simple cells respond to light or darkness in a certain area of the visual field, that is called receptive field. They combine multiple ON- of OFF-cells coming from the ganglion layer in the retina as one can see in figure \ref{simple-cell}. Thereby orientation selective simple cells can be modeled.
 	
-		The research of \citeauthor{hubel1962receptive} was not originally intended for object recognition. It was extended by \citeauthor{riesenhuber1999hierarchical} to form a hierarchical model that uses simple and complex cells as building blocks, the HMAX model. As mentioned in \ref{signal}, as most models this one is strictly feed-forward only. 
+			\begin{figure}[H]
+				\centering
+				\captionsetup{justification=centering,margin=1cm}
+				\includegraphics[width=0.2\textwidth, trim=6.9cm 2cm 21.4cm 17cm, clip]{images/Simple_and_Complex_Cells.pdf}
+				\caption[https://en.wikipedia.org/wiki/File:Simple\_and\_Complex\_Cells.pdf]{Overlap over multiple ON-center ganglion cells that is performed by a simple cell}
+				\label{simple-cell}
+			\end{figure}
+			
+			Complex cells on the other hand combine the output of multiple simple cells and are able to fire when detecting edges or even motion in a specific direction. Figure \ref{hubel-exp} shows a experiment that was performed using a cat as test subject. An electrode was injected into a complex cell in the visual cortex. If the bright white bar was moved in the direction of the drawn arrow, the neuron would fire. If the bar stops or moves the other direction, it would not.
+			
+			\begin{figure}[H]
+				\centering
+				\captionsetup{justification=centering,margin=1cm}
+				\includegraphics[width=0.5\textwidth]{images/hubel-experiment.png}
+				\caption{Experiment performed by \citeauthor{hubel1962receptive}: Complex cell of a cat's visual cortex, the neuron fires only if a short bar is moved in the arrows direction [Source: youtube.com]}
+				\label{hubel-exp}
+			\end{figure}
+			
+			In \citep{hubel1965receptive} the two scientists extended their model with the introduction of so called hypercomplex cells. These are basically cells with a complexity beyond the normal complex cells and can be found in higher cortical areas.
+			
+	\section{Feed-Forward Models}
+		
+		\subsection{HMAX model for object recognition}\label{hmax}
+		
+			The research of \citeauthor{hubel1962receptive} was not originally intended for object recognition. It was extended by \citeauthor{riesenhuber1999hierarchical} to form a hierarchical model that uses simple and complex cells as building blocks, the HMAX model. As mentioned in \ref{signal}, as most models this one is strictly feed-forward only. 
+		
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=0.8\textwidth, trim= 9cm 18cm 2.5cm 4cm, clip]{images/riesenhuber-poggio-1999-models-p3.pdf}
+				\caption{HMAX model by \citep{riesenhuber1999hierarchical}}
+				\label{hmax-model}
+			\end{figure}
+			
+			As one can see in figure \ref{hmax-model}, the model consists of 5 layers. The first four layers are alternating simple and complex cells. The first stage features a lattice of blocks that are sensitive to orientation in their respective receptive field. The second layer creates position invariance as it pools over simple cells with the same orientation angle. At S2 these complex cell outputs are composed to selective features such as edges or borders. After another layer that increases invariance over various transformations, view-tuned cells can describe abstract high-level features like the presence of a specific object. Scale invariance is not shown in this figure, but it is achieved by utilizing different scales of simple cells and involvement in the subsequent complex pooling operation.
+			
+			For object identification, supervised learning of the HMAX model is pretty straight-forward. An image of the object is inserted into the model. The response of the second complex cell layer is recorded and turned into an appropriate view-tuned cell. But there is a need for learning of objects by many pictures differing in perspective, illuminance, position and other transformations. This easily lead to a vast amount of example images for one object.
+		
+		\subsection{Extention of HMAX with Template Matching}
+		
+			A few years later \citeauthor{serre2007robust} extended the HMAX model with template matching functionality which is more closer the biological reality in the inferotemporal cortex \citep{poggio2004generalization}. The basic assumptions are the same as for the standard HMAX model: the processing is hierarchial (scale and position first, then other transformations), feed-forward only and an increasing receptive field the higher level a neuron is. But one major thing changes now: Learning is assumed to happen almost at every layer which has to be realized as well as possible.
+	
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=\textwidth, trim= 2.5cm 15.35cm 4cm 3.5cm, clip]{images/serre-appearance-based-model.pdf}
+				\caption{System overview of the model proposed by \citeauthor{serre2007robust}}
+				\label{serre-model}
+			\end{figure}
+			
+			%todo
+			
+	\section{Biological plausibility}
 
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=0.8\textwidth, trim= 9cm 18cm 2.5cm 4cm, clip]{images/riesenhuber-poggio-1999-models-p3.pdf}
-			\caption{HMAX model by \citep{riesenhuber1999hierarchical}}
-			\label{hmax-model}
-		\end{figure}
+		- simple and complex (MAX) cell functions by \cite{serre2005theory} chapter 3
+	
+		- no feedback
 		
-		%todo
-		Explain \autoref{hmax-model} completely.
+		- needs many examples for learning an object
+			> Human can do this with only very few
 		
-		\subsection{Only Feed-Forward model i.e. by Serre et al.}
+		- clutter in scene causes big issues
 		
-			- + feature learning at higher levels, switching to templates: Serre et al., Robust Object Recognition with Cortex-Like Mechanisms, 2007
-			
-		\subsection{Supervised Learning}
-		
-			- need for learning of localized objects by many pictures differing in
-				- perspective
-				- illuminance
-				- ...
-			
-			- many examples per object needed
-		
-		\subsection{Biological plausibility}
-		
-			- no feedback
-			
-			- needs many examples for learning an object
-				> Human can do this with only very few
-			
-			- clutter in scene causes big issues
-			
-			- Problems may be solved using feedback
+		- Problems may be solved using feedback
 
-			- +++ include hierarchy image
-
-		\subsection{Comparison with State-of-the-Art Artificial Object Recognition}
+		- +++ include hierarchy image
+	
+	\section{Comparison with State-of-the-Art Artificial Object Recognition}
+	
+		- common test framework: CaltecXYZ
+	
+		- regarding categorization, feature extraction (SIFT)
 		
-			- common test framework: CaltecXYZ
-		
-			- regarding categorization, feature extraction (SIFT)
+		\citep{serre2007robust}
 			
-			\citep{serre2007robust}
- 
 \chapter{Application: Localization}
 
 	- two approaches:
