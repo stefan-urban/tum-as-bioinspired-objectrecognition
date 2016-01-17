@@ -133,7 +133,7 @@
 %			- top-down (goal driven): viewing task, expectations based on other stimuli or memory, temporal continuity, reasoning (visual attention)
 	
 		
-	\section{Signal Propagation}
+	\section{Signal Propagation}\label{signal}
 		
 		The only connection of the retina is the optic nerve. It is about 1 million axons transmitting information in one direction, hence only feed-forward.
 		
@@ -144,23 +144,45 @@
 		
 	\section{Simple and Complex Cells}
 		
-		Nobel prize winners \citep{hubel1962receptive}
+		The basis for the following models described in section \ref{hmax} is an achievement by nobel prize winners \citeauthor{hubel1962receptive}. They discovered two types of neurons in the visual cortex: simple and complex cells.
 		
-	
+		The simple cells respond to light or darkness in a certain area of the visual field, that is called receptive field. They combine multiple ON- of OFF-cells coming from the ganglion layer in the retina as one can see in figure \ref{simple-cell}. Thereby orientation selective simple cells can be modeled.
+
+		\begin{figure}[H]
+			\centering
+			\captionsetup{justification=centering,margin=1cm}
+			\includegraphics[width=0.2\textwidth, trim=6.9cm 2cm 21.4cm 17cm, clip]{images/Simple_and_Complex_Cells.pdf}
+			\caption[https://en.wikipedia.org/wiki/File:Simple\_and\_Complex\_Cells.pdf]{Overlap over multiple ON-center ganglion cells that is performed by a simple cell}
+			\label{simple-cell}
+		\end{figure}
+		
+		Complex cells on the other hand combine the output of multiple simple cells and are able to fire when detecting edges or even motion in a specific direction. Figure \ref{hubel-exp} shows a experiment that was performed using a cat as test subject. An electrode was injected into a complex cell in the visual cortex. If the bright white bar was moved in the direction of the drawn arrow, the neuron would fire. If the bar stops or moves the other direction, it would not.
+		
 		\begin{figure}[H]
 			\centering
 			\captionsetup{justification=centering,margin=1cm}
 			\includegraphics[width=0.5\textwidth]{images/hubel-experiment.png}
 			\caption{Experiment performed by \citeauthor{hubel1962receptive}: Complex cell of a cat's visual cortex, the neuron fires only if a short bar is moved in the arrows direction [Source: youtube.com]}
+			\label{hubel-exp}
 		\end{figure}
 		
-	\section{HMAX models}
+		In \citep{hubel1965receptive} the two scientists extended their model with the introduction of so called hypercomplex cells. These are basically cells with a complexity beyond the normal complex cells and can be found in higher cortical areas.
+		
+	\section{HMAX model for object recognition}\label{hmax}
 	
+		The research of \citeauthor{hubel1962receptive} was not originally intended for object recognition. It was extended by \citeauthor{riesenhuber1999hierarchical} to form a hierarchical model that uses simple and complex cells as building blocks, the HMAX model. As mentioned in \ref{signal}, as most models this one is strictly feed-forward only. 
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.8\textwidth, trim= 9cm 18cm 2.5cm 4cm, clip]{images/riesenhuber-poggio-1999-models-p3.pdf}
+			\caption{HMAX model by \citep{riesenhuber1999hierarchical}}
+			\label{hmax-model}
+		\end{figure}
+		
+		%todo
+		Explain \autoref{hmax-model} completely.
+		
 		\subsection{Only Feed-Forward model i.e. by Serre et al.}
-		
-			- simple and complex cells by hubel and wiesel
-		
-			- HMAX: Riesenhuber, Poggio extended this to object recognition
 		
 			- + feature learning at higher levels, switching to templates: Serre et al., Robust Object Recognition with Cortex-Like Mechanisms, 2007
 			
